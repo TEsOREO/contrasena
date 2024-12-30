@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambiar Contraseña</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="background">
+    <div class="container">
+      <h1>Cambiar Contraseña</h1>
+      <p class="info-text">
+        Por seguridad, te recomendamos actualizar tu contraseña periódicamente para proteger tu cuenta.
+      </p>
+      <form id="passwordForm" onsubmit="return validarContraseña()">
+        <div class="form-group">
+          <label for="current-password">Contraseña Actual</label>
+          <input 
+            type="password" 
+            id="current-password" 
+            name="current-password" 
+            placeholder="Ingresa tu contraseña actual" 
+            required>
+        </div>
+        <div class="form-group">
+          <label for="new-password">Nueva Contraseña</label>
+          <input 
+            type="password" 
+            id="new-password" 
+            name="new-password" 
+            placeholder="Ingresa tu nueva contraseña" 
+            required 
+            minlength="6" 
+            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$" 
+            title="La contraseña debe contener al menos 6 caracteres, incluyendo letras y números.">
+        </div>
+        <div class="form-group">
+          <label for="confirm-password">Confirmar Contraseña</label>
+          <input 
+            type="password" 
+            id="confirm-password" 
+            name="confirm-password" 
+            placeholder="Confirma tu nueva contraseña" 
+            required>
+        </div>
+        <button type="submit">Actualizar Contraseña</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Validar contraseñas
+    function validarContraseña() {
+      const nueva = document.getElementById('new-password').value;
+      const confirmar = document.getElementById('confirm-password').value;
+
+      if (nueva !== confirmar) {
+        alert('Las contraseñas no coinciden. Por favor, inténtalo de nuevo.');
+        return false;
+      }
+      return true;
+    }
+  </script>
+</body>
+</html>
